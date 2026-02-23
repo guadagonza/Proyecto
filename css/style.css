@@ -1,0 +1,256 @@
+/* Limpiar la web */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 100px;/* altura del header */
+    background: #5B8FBF;
+    color: #fff;/* color del texto */
+    display: flex;
+    padding: 0 50px;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center; /* alinear el contenido del header */
+}
+
+.logo{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 200px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 200;
+    margin-left: 20px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;/*revisar cualquier error*/
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.mostrar-menu,
+.cerrar-menu{
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: none;/* esconde el menú por defecto */
+}
+
+.mostrar-menu{
+    order: 1;
+}
+
+.menu a:hover, 
+.mostrar-menu:hover,
+.cerrar-menu:hover{
+    color: #F4A6B8;
+}
+
+#check{
+    display: none;/* esconde el checkbox por defecto */
+}
+
+/*para el menu oculto*/
+.menu::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* fondo semitransparente para el menú */
+    top: 0;
+    left: 0;
+    z-index: -1; /* para que el fondo no tape el contenido del menú */
+   
+}
+
+
+
+/*BANNER*/
+#banner{
+    background-color: #eaf3fb;
+    text-align: center;
+}
+
+.imagen-banner{
+    background-image: url(../imagenes/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+.Contenido-banner{
+    max-width: auto;
+    margin: auto;
+    padding: 20px;
+    background:white;
+    border-radius:12px; 
+}
+
+/*GALERIA DE IMAGENES*/
+.fondo-galeria img{
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.galeria img:hover{
+    transform: translateY(-20px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+.galeria{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));/* para que se ajuste a cualquier tamaño de pantalla */
+    gap: 20px;
+    padding: 20px;
+}
+.galeria img{/* para que las imagenes se ajusten al tamaño del contenedor */
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* SOBRE NOSOTROS */
+
+.fondo-nosotros{ /* el body hace que el fondo de toda la página sea la imagen del lago */
+    background-image: url(../imagenes/lago.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    min-height: 100vh;/*para que se adapte a cualquier tamaño de pantalla*/
+}
+
+.Sobre-Nosotros,
+.Mision{    
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(225, 225, 225, 0.8);
+    border-radius:12px; 
+}
+
+/*Contacto*/
+.fondo-contacto{
+    min-height: 100vh;/*para que se adapte a cualquier tamaño de pantalla*/
+    background-image: url(../imagenes/bosque.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    
+}
+
+.Contacto{
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(225, 225, 225, 0.5);
+    border-radius:12px; 
+}
+
+.Contacto h2{
+    margin-bottom: 20px;
+}
+.Contacto p{
+    margin-bottom: 20px;
+    
+}
+.Contacto li{
+    margin-bottom: 10px;
+}
+
+/*agrega estilo a los parrafos grandes para que se vean mejor*/
+.Sobre-Nosotros p,
+.Mision p,
+.Contacto p,
+.Contenido-banner p{
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/*para que se ajuste a cualquier dispositivo*/
+@media(max-width: 768px){
+
+    /*Header*/
+    .mostrar-menu,
+    .cerrar-menu{
+        display:block;
+    }
+
+    .menu{
+        position:fixed;
+        width:100%;
+        height:100vh;/* ocupe el 100% de todo en cualquier dispositivo*/
+        background: #5B8FBF;
+
+        /* Ajustar el menu para que se vea desde la derecha*/
+
+        right:-100%;
+        top:0;
+        text-align: center;
+        pad: 100px 0px;
+        z-index: 100; /* por si hay varios elementos no caiga un encima del otro*/
+        transition: 0.8s;
+        flex-direction: column;
+        
+
+    }
+
+    .menu a{
+        display: block;
+        padding: 15px 0;
+        font-size: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 10ox;
+        
+    }
+
+    .menu a:hover{
+        background-color:rgb(255, 255, 255, 0.2);
+        color: #F4A6B8;
+    }
+
+    .cerrar-menu{
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 40px;
+    }
+
+    #check:checked~.menu{
+        right: 0;
+    }
+
+    /*PERSONAS*/
+    #personas{
+        flex-direction: column;
+    }
+
+    /*ICONOS*/ 
+    .contenido-iconos{
+        flex-direction: column;
+    }
+
+    .contenido-iconos div{
+        border: none;
+    }
+
+    /*FORMULARIO*/  
+    .datos-form{
+        flex-direction: column;
+    }
+ 
+
+}/*final media*/
